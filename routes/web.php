@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Admin\IndexController as AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,12 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-});
-Route::get('/about', function () {
-    return view('about');
-});
-Route::get('/news', function () {
-    return view('news');
-});
+Route::get('/', [IndexController::class, 'index'])->name('home');
+
+//Route::get('/news/category/sport', [NewsController::class, 'index'])->name('news');
+Route::get('/news', [NewsController::class, 'index'])->name('news');
+Route::get('/news/{id}', [NewsController::class, 'show'])->name('one');
+
+Route::view('/about', 'about')->name('about');
+
+Route::name('admin.')
+    ->prefix('admin')
+    ->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('index');
+        Route::get('/test1', [AdminController::class, 'test1'])->name('test1');
+        Route::get('/test2', [AdminController::class, 'test2'])->name('test2');
+    });
+
+
