@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\CategoriesController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\IndexController as AdminController;
@@ -21,6 +22,9 @@ Route::get('/', [IndexController::class, 'index'])->name('home');
 //Route::get('/news/category/sport', [NewsController::class, 'index'])->name('news');
 Route::get('/news', [NewsController::class, 'index'])->name('news');
 Route::get('/news/{id}', [NewsController::class, 'show'])->name('one');
+
+Route::get('/categories', [CategoriesController::class, 'index'])->name('categories');
+Route::get('/categories/{id}', [CategoriesController::class, 'show'])->name('one');
 
 Route::view('/about', 'about')->name('about');
 

@@ -15,6 +15,13 @@ class News
             'category_id' => 1
         ],
         [
+            'id' => 3,
+            'title' => 'Новость 3',
+            'text' => 'А у нас новость 3 и она очень хорошая!',
+            'slug' => 'novost3',
+            'category_id' => 1
+        ],
+        [
             'id' => 2,
             'title' => 'Новость 2',
             'text' => 'А тут плохие новости(((',
@@ -33,5 +40,14 @@ class News
             }
         }
         return [];
+    }
+    public static function getNewsByCategoryId($id) {
+        $arr = array();
+        foreach (static::getNews() as $news) {
+            if ($news['category_id'] == $id) {
+                array_push($arr, $news);
+            }
+        }
+        return $arr;
     }
 }
