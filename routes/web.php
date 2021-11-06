@@ -5,7 +5,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CategoriesController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Admin\IndexController as AdminController;
+use App\Http\Controllers\admin\IndexController as AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

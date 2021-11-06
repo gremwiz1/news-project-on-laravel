@@ -17,7 +17,7 @@ class CategoriesController extends Controller
     public function show($id) {
         $categories = Categories::getCategoryId($id);
         $news = News::getNewsByCategoryId($id);
-        $data = ['categories' => $categories, 'news' => $news];
-        return view('categories.one')->with('data', ['categories' => $categories,'news' => $news]);
+
+        return view('categories.one')->with('categories', $categories)->with('news',$news);
     }
 }
